@@ -12,7 +12,7 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '7ee124db-73dc-40bb-bff8-e248118a49e0'
   imageRepository: 'backend'
-  containerRegistry: 'BookStoreWebApi.azurecr.io'
+  containerRegistry: 'bookstorewebapi.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/proyect/BookStore/BookStore.WebApi.dockerfile'
   tag: '$(Build.BuildId)'
   
