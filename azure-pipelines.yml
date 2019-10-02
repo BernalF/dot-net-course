@@ -10,9 +10,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '3dc271e3-c8c0-4c50-9aac-802252d75325'
+  dockerRegistryServiceConnection: '7ee124db-73dc-40bb-bff8-e248118a49e0'
   imageRepository: 'backend'
-  containerRegistry: 'bookstore.azurecr.io'
+  containerRegistry: 'BookStoreWebApi.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/proyect/BookStore/BookStore.WebApi.dockerfile'
   tag: '$(Build.BuildId)'
   
