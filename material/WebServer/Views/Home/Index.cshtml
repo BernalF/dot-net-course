@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>My Site's Title</title>
+    <script src="//code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script>
+        async function getProducts() {
+            const response = await fetch('/api/products');
+            return await response.json();
+        }
+
+        getProducts().then(data => {
+            $.each(data, function (i, v) {
+                $('#result').html($('#result').html() + v.name + " - " + v.color + '<br />');
+            });
+        });
+    </script>
+</head>
+<body>
+    
+<h1>Products</h1>
+<div id="result">
+
+</div>
+</body>
+</html>

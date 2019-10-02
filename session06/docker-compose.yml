@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  webclient:
+    image: ${DOCKER_REGISTRY-}webclient
+    build:
+      context: ./WebClient
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+      - "5001:443"
+    #environment:
+      #- ASPNETCORE_URLS=https://+:443;http://+:80;https://+:5001;http://+:5000
+
+  webServer:
+    image: ${DOCKER_REGISTRY-}webserver
+    build:
+      context: ./
+      dockerfile: WebServer/Dockerfile
+    ports:
+    # - host:container
+      - "5002:80"
+      - "5003:443"
+    environment:
+      - AdventureWorksDatabase=Data Source=db,1433;Initial Catalog=AdventureWorks;User ID=sa;Password=Password.123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+      #- ASPNETCORE_URLS=https://+:443;http://+:80;https://+:5001;http://+:5000
+
+  db:
+    image: ${DOCKER_REGISTRY-}adventureworks
+    build:
+      context: ./Docker/adventure_works
+      dockerfile: Dockerfile
+    ports:
+      - "1433:1433"
+# docker-compose -f "docker-compose.yml" up -d --build

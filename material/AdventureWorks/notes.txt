@@ -1,0 +1,5 @@
+﻿----create EF model
+dotnet ef dbcontext scaffold "data source=localhost;initial catalog=AdventureWorks;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+---migrations - update model
+dotnet ef migrations add initial

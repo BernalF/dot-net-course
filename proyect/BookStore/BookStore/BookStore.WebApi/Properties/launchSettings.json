@@ -1,0 +1,39 @@
+﻿{
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "anonymousAuthentication": true,
+        "iisExpress": {
+            "applicationUrl": "http://localhost:60727",
+            "sslPort": 44357
+        }
+    },
+    "profiles": {
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "BookStore.WebApi": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "applicationUrl": "https://localhost:5003;http://localhost:5002"
+        },
+        "Docker": {
+            "commandName": "Docker",
+            "launchBrowser": true,
+            "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+            "environmentVariables": {
+                "ASPNETCORE_URLS": "https://+:443;http://+:80;https://+:5003;http://+:5002",
+                "ASPNETCORE_HTTPS_PORT": "5003"
+            },
+            "httpPort": 5002,
+            "sslPort": 5003,
+            "useSSL": true
+        }
+    }
+}

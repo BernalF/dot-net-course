@@ -1,0 +1,42 @@
+﻿@page
+@model BookStore.WebClient.Pages.Reviews.IndexModel
+
+@{
+    ViewData["Title"] = "Reviews List";
+}
+
+<h1>Reviews List</h1>
+
+<p>
+    <a asp-page="Create">Submit a Review</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews[0].Review)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews[0].User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews[0].InsertDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Reviews) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>
+            <td>
+                Anonymous
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InsertDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

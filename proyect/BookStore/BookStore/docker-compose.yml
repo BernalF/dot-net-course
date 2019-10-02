@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  webApi:
+    image: ${DOCKER_REGISTRY-}bookstore.webapi
+    build:
+      context: ./
+      dockerfile: BookStore.WebApi/Dockerfile
+    ports:
+    # - host:container
+      - "5002:80"
+      - "5003:443"
+    environment:
+       - BookStoreDatabase=Data Source=db,1433;Initial Catalog=BookStoreDB;User ID=sa;Password=Password.123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+      #- ASPNETCORE_URLS=https://+:443;http://+:80;https://+:5001;http://+:5000
+
+ webClient:
+   image: ${DOCKER_REGISTRY-}bookstore.webclient
+   build:
+     context: ./
+     dockerfile: BookStore.WebClient/Dockerfile
+   ports:
+     - "5000:80"
+     - "5001:443"
+   #environment:
+     #- ASPNETCORE_URLS=https://+:443;http://+:80;https://+:5001;http://+:5000
+
+  db:
+    image: ${DOCKER_REGISTRY-}bookstoredb
+    build:
+      context: ./Docker/book_store
+      dockerfile: Dockerfile
+    ports:
+      - "1433:1433"
+# docker-compose -f "docker-compose.yml" up -d --build
